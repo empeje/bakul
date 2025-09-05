@@ -1,7 +1,7 @@
 # Bakul - AI Data Storage Layer 🧺
 
-[![Test Suite](https://github.com/YOUR_USERNAME/bakul/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR_USERNAME/bakul/actions/workflows/test.yml)
-[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/YOUR_USERNAME/bakul)
+[![Test Suite](https://github.com/empeje/bakul/actions/workflows/test.yml/badge.svg)](https://github.com/empeje/bakul/actions/workflows/test.yml)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/empeje/bakul)
 [![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue.svg)](https://www.typescriptlang.org/)
 
 This project is a Hono + Cloudflare Worker app that provides an API layer for dataset storage and management, bridging the gap between AI-generated data and AI-generated visualizations. See [TODO.md](./TODO.md) for complete feature documentation.
