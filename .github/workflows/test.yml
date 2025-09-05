@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18, 20]
+        node-version: [20, 22]
 
     steps:
       - name: Checkout code
@@ -80,7 +80,7 @@ jobs:
         run: pnpm run cf-typegen
 
       - name: TypeScript check
-        run: npx tsc --noEmit
+        run: pnpm exec tsc --noEmit
 
       - name: Check for unused exports
         run: npx ts-unused-exports tsconfig.json --exitOnUnusedFound

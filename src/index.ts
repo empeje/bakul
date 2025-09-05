@@ -193,12 +193,20 @@ const healthRoute = createRoute({
           })
         }
       }
+    },
+    500: {
+      description: 'Internal server error',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
     }
   }
 })
 
 app.openapi(healthRoute, (c) => {
-  return c.json({ status: 'ok', timestamp: new Date().toISOString() })
+  return c.json({ status: 'ok', timestamp: new Date().toISOString() }, 200)
 })
 
 // User registration route
@@ -251,6 +259,14 @@ const registerRoute = createRoute({
           schema: z.object({ error: z.string() })
         }
       }
+    },
+    500: {
+      description: 'Internal server error',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
     }
   }
 })
@@ -295,7 +311,7 @@ app.openapi(registerRoute, async (c) => {
       message: 'User registered successfully',
       apiKey,
       instructions: 'Use this API key to authenticate your requests. Keep it secure!'
-    })
+    }, 200)
     
   } catch (error) {
     console.error('Registration error:', error)
@@ -337,6 +353,14 @@ const rotateKeyRoute = createRoute({
           schema: z.object({ error: z.string() })
         }
       }
+    },
+    500: {
+      description: 'Internal server error',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
     }
   }
 })
@@ -371,7 +395,7 @@ app.openapi(rotateKeyRoute, async (c) => {
     return c.json({
       message: 'API key rotated successfully',
       apiKey: newApiKey
-    })
+    }, 200)
     
   } catch (error) {
     console.error('Key rotation error:', error)
@@ -439,6 +463,22 @@ const createDatasetRoute = createRoute({
           schema: z.object({ error: z.string() })
         }
       }
+    },
+    429: {
+      description: 'Rate limit exceeded',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
+    },
+    500: {
+      description: 'Internal server error',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
     }
   }
 })
@@ -494,7 +534,7 @@ app.openapi(createDatasetRoute, async (c) => {
       datasetId,
       publicUrl: `/api/datasets/${user.username}/${datasetId}`,
       schemaUrl: `/api/datasets/${user.username}/${datasetId}/schema`
-    })
+    }, 200)
     
   } catch (error) {
     console.error('Dataset creation error:', error)
@@ -550,8 +590,46 @@ const updateDatasetRoute = createRoute({
         }
       }
     },
-    401: { description: 'Unauthorized' },
-    404: { description: 'Dataset not found' }
+    400: {
+      description: 'Bad request (e.g., data too large)',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
+    },
+    401: {
+      description: 'Unauthorized',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
+    },
+    404: {
+      description: 'Dataset not found',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
+    },
+    429: {
+      description: 'Rate limit exceeded',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
+    },
+    500: {
+      description: 'Internal server error',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
+    }
   }
 })
 
@@ -614,7 +692,7 @@ app.openapi(updateDatasetRoute, async (c) => {
       datasetId: id,
       publicUrl: `/api/datasets/${user.username}/${id}`,
       schemaUrl: `/api/datasets/${user.username}/${id}/schema`
-    })
+    }, 200)
     
   } catch (error) {
     console.error('Dataset update error:', error)
@@ -659,6 +737,14 @@ const getDatasetRoute = createRoute({
           schema: z.object({ error: z.string() })
         }
       }
+    },
+    500: {
+      description: 'Internal server error',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
     }
   }
 })
@@ -689,7 +775,7 @@ app.openapi(getDatasetRoute, async (c) => {
         username,
         id
       }
-    })
+    }, 200)
     
   } catch (error) {
     console.error('Dataset retrieval error:', error)
@@ -734,6 +820,14 @@ const getSchemaRoute = createRoute({
           schema: z.object({ error: z.string() })
         }
       }
+    },
+    500: {
+      description: 'Internal server error',
+      content: {
+        'application/json': {
+          schema: z.object({ error: z.string() })
+        }
+      }
     }
   }
 })
@@ -764,7 +858,7 @@ app.openapi(getSchemaRoute, async (c) => {
         username,
         id
       }
-    })
+    }, 200)
     
   } catch (error) {
     console.error('Schema retrieval error:', error)
