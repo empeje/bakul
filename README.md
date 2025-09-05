@@ -24,3 +24,7 @@ This project is a Hono + Cloudflare Worker app that provides an API layer for da
 - [Cloudflare Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 
 ## 🛠️ Local Development
+
+---
+
+Copyright 2025 - [empeje](https://github.com/empeje)
