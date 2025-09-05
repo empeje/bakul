@@ -1,21 +1,11 @@
-```txt
-npm install
-npm run dev
-```
+## Getting Started
 
-```txt
-npm run deploy
-```
+This project is a Hono + Cloudflare Worker app that provides an API layer for dataset storage and management, as described in [TODO.md](./TODO.md).
 
-[For generating/synchronizing types based on your Worker configuration run](https://developers.cloudflare.com/workers/wrangler/commands/#types):
+### Prerequisites
 
-```txt
-npm run cf-typegen
-```
+- [pnpm](https://pnpm.io/) (required for package management)
+- [Node.js](https://nodejs.org/)
+- [Cloudflare Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 
-Pass the `CloudflareBindings` as generics when instantiation `Hono`:
-
-```ts
-// src/index.ts
-const app = new Hono<{ Bindings: CloudflareBindings }>()
-```
+### Local Development

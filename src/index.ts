@@ -395,7 +395,15 @@ const createDatasetRoute = createRoute({
               description: 'Dataset name'
             }),
             data: z.any().openapi({
-              description: 'JSON data (max 5MB) - schema will be auto-generated'
+              description: 'JSON data (max 5MB) - schema will be auto-generated',
+              example: {
+                "users": [
+                  {"id": 1, "name": "John Doe", "email": "john@example.com", "active": true},
+                  {"id": 2, "name": "Jane Smith", "email": "jane@example.com", "active": false}
+                ],
+                "total": 2,
+                "lastUpdated": "2024-01-15T10:30:00Z"
+              }
             })
           })
         }
@@ -512,7 +520,16 @@ const updateDatasetRoute = createRoute({
         'application/json': {
           schema: z.object({
             data: z.any().openapi({
-              description: 'JSON data (max 5MB) - schema will be auto-generated'
+              description: 'JSON data (max 5MB) - schema will be auto-generated',
+              example: {
+                "users": [
+                  {"id": 1, "name": "John Doe", "email": "john@example.com", "active": true},
+                  {"id": 2, "name": "Jane Smith", "email": "jane@example.com", "active": false},
+                  {"id": 3, "name": "Bob Wilson", "email": "bob@example.com", "active": true}
+                ],
+                "total": 3,
+                "lastUpdated": "2024-01-15T11:00:00Z"
+              }
             })
           })
         }
