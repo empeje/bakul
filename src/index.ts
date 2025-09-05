@@ -90,6 +90,18 @@ app.doc('/api/openapi.json', {
 app.get('/api/doc', swaggerUI({ url: '/api/openapi.json' }))
 
 // Helper functions
+function getBaseUrl(c: any): string {
+  // Check if we're in production (ba.kul.to domain)
+  const host = c.req.header('host') || c.req.header('x-forwarded-host')
+  if (host && host.includes('ba.kul.to')) {
+    return 'https://ba.kul.to'
+  }
+  
+  // Fallback for other environments
+  const protocol = c.req.header('x-forwarded-proto') || 'https'
+  return host ? `${protocol}://${host}` : ''
+}
+
 async function hashPassword(password: string): Promise<string> {
   const encoder = new TextEncoder()
   const data = encoder.encode(password)
@@ -529,11 +541,12 @@ app.openapi(createDatasetRoute, async (c) => {
       JSON.stringify(generatedSchema)
     ).run()
     
+    const baseUrl = getBaseUrl(c)
     return c.json({
       message: 'Dataset created successfully',
       datasetId,
-      publicUrl: `/api/datasets/${user.username}/${datasetId}`,
-      schemaUrl: `/api/datasets/${user.username}/${datasetId}/schema`
+      publicUrl: `${baseUrl}/api/datasets/${user.username}/${datasetId}`,
+      schemaUrl: `${baseUrl}/api/datasets/${user.username}/${datasetId}/schema`
     }, 200)
     
   } catch (error) {
@@ -687,11 +700,12 @@ app.openapi(updateDatasetRoute, async (c) => {
       user.id
     ).run()
     
+    const baseUrl = getBaseUrl(c)
     return c.json({
       message: 'Dataset updated successfully',
       datasetId: id,
-      publicUrl: `/api/datasets/${user.username}/${id}`,
-      schemaUrl: `/api/datasets/${user.username}/${id}/schema`
+      publicUrl: `${baseUrl}/api/datasets/${user.username}/${id}`,
+      schemaUrl: `${baseUrl}/api/datasets/${user.username}/${id}/schema`
     }, 200)
     
   } catch (error) {
