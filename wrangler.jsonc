@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "bakul",
   "main": "src/index.ts",
-  "compatibility_date": "2025-09-05"
+  "compatibility_date": "2025-09-05",
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
@@ -21,13 +21,13 @@
   //     "bucket_name": "my-bucket"
   //   }
   // ],
-  // "d1_databases": [
-  //   {
-  //     "binding": "MY_DB",
-  //     "database_name": "my-database",
-  //     "database_id": ""
-  //   }
-  // ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bakul-db",
+      "database_id": "77885afa-4e92-483e-834d-f73e10bfbc39"
+    }
+  ],
   // "ai": {
   //   "binding": "AI"
   // },
