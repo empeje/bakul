@@ -64,6 +64,17 @@ app.get('/', (c) => {
         </div>
         
         <div class="section">
+          <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+           padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+           border-radius: 8px; will-change: transform;">
+            <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+              src="https://www.canva.com/design/DAGyKqa9RI4/iwoMAOL8pIR0Uoc87d2GSA/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+          </div>
+          <a href="https://www.canva.com/design/DAGyKqa9RI4/iwoMAOL8pIR0Uoc87d2GSA/watch?utm_content=DAGyKqa9RI4&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">bakul</a> by empeje
+        </div>
+        
+        <div class="section">
           <h2>What is Bakul?</h2>
           <p>In Javanese, "bakul" refers to a woven bamboo basket. In the AI world, Bakul bridges the gap between AI-generated data (CSVs, datasets) and AI-generated visualizations (React components, dashboards).</p>
         </div>
