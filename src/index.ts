@@ -10,6 +10,30 @@ type Bindings = CloudflareBindings
 
 const app = new OpenAPIHono<{ Bindings: Bindings }>()
 
+// CORS middleware
+app.use('*', async (c, next) => {
+  // Handle preflight requests
+  if (c.req.method === 'OPTIONS') {
+    return new Response(null, {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Max-Age': '86400',
+      },
+    })
+  }
+
+  // Add CORS headers to all responses
+  await next()
+  
+  c.header('Access-Control-Allow-Origin', '*')
+  c.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+  c.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  c.header('Access-Control-Expose-Headers', 'Content-Type')
+})
+
 // Register security scheme
 app.openAPIRegistry.registerComponent('securitySchemes', 'Bearer', {
   type: 'http',
