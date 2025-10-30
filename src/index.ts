@@ -816,11 +816,11 @@ app.openapi(getDatasetRoute, async (c) => {
     const data = JSON.parse(dataset.data as string)
     
     return c.json({
-      name: dataset.name,
+      name: dataset.name as string,
       data,
       metadata: {
-        created_at: dataset.created_at,
-        updated_at: dataset.updated_at,
+        created_at: dataset.created_at as string,
+        updated_at: dataset.updated_at as string,
         username,
         id
       }
@@ -899,11 +899,11 @@ app.openapi(getSchemaRoute, async (c) => {
     const schema = dataset.schema ? JSON.parse(dataset.schema as string) : null
     
     return c.json({
-      name: dataset.name,
+      name: dataset.name as string,
       schema,
       metadata: {
-        created_at: dataset.created_at,
-        updated_at: dataset.updated_at,
+        created_at: dataset.created_at as string,
+        updated_at: dataset.updated_at as string,
         username,
         id
       }
