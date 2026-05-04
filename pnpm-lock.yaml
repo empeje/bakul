@@ -24,8 +24,8 @@ importers:
         specifier: ^4.12.14
         version: 4.12.14
       uuid:
-        specifier: ^12.0.0
-        version: 12.0.0
+        specifier: ^14.0.0
+        version: 14.0.0
       zod:
         specifier: ^4.1.5
         version: 4.1.5
@@ -1686,8 +1686,8 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  uuid@12.0.0:
-    resolution: {integrity: sha512-USe1zesMYh4fjCA8ZH5+X5WIVD0J4V1Jksm1bFTVBX2F/cwSXt0RO5w/3UXbdLKmZX65MiWV+hwhSS8p6oBTGA==}
+  uuid@14.0.0:
+    resolution: {integrity: sha512-Qo+uWgilfSmAhXCMav1uYFynlQO7fMFiMVZsQqZRMIXp0O7rR7qjkj+cPvBHLgBqi960QCoo/PH2/6ZtVqKvrg==}
     hasBin: true
 
   vite-node@3.2.4:
@@ -3294,7 +3294,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  uuid@12.0.0: {}
+  uuid@14.0.0: {}
 
   vite-node@3.2.4(yaml@2.8.1):
     dependencies:
